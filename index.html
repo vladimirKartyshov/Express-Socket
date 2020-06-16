@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Кодировка веб-страницы -->
+    <meta charset="utf-8">
+    <!-- Настройка viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Подключаем Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
 <body>
-    <h1>hi hi hi hi</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class=" messages-list col-8">
+            <div class="d-none">
+                <h2>Messages</h2>
+                <ul class="list-group">
+                    <a class="list-group-item list-group-item-action ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">User name</h5>
+                            <small class="text-muted">Time</small>
+                        </div>
+                        <p class="mb-1">Message</p>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="users-list d-none">
+                <h2>Users</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">User1</li>
+                </ul>
+            </div>
+            <div class="login-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nickname">Nickname</label>
+                        <input type="text" id="nickname">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="message-form-container fixed-bottom">
+        <form class="message-form ml-4 mr-4 d-none">
+            <div class="form-row">
+                <div class="col-10 mb-5">
+                    <input type="text" class="form-control" placeholder="message"/>
+                </div>
+                <div class="col-2 mb-5">
+                    <button type="submit" class="btn btn-primary w-100">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Подключаем jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Подключаем плагин Popper -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<!-- Подключаем Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" ></script>
+
 </body>
 </html>
