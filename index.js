@@ -10,18 +10,42 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+
   socket.on('login', (data)=> {
      const found = users.find((nickname) => {
           return nickname === data;
       })
       if (!found) {
           users.push(data);
+          socket.nickname = data;
           io.sockets.emit('login', {status: 'OK'});
+          io.sockets.emit('users', {users});
       }else {
           io.sockets.emit('login', {status: 'FAILED'});
       }
   });
+
+    socket.on('message', (data) => {
+        io.sockets.emit('new message', {
+            message: data,
+            time: new Date(),
+            nickname: socket.nickname
+        });
+    });
+
+    // при прекращении соединения проходимся по списку пользователей и удаляем вышедшего с чата
+    socket.on('disconnet', (data) => {
+        for (let index = 0; index < users.length; index++) {
+            if (users[index] === socket.nickname){
+                users.splice(index, 1);
+            }
+        }
+        // оповещаем пользователей
+        io.sockets.emit('users', {users});
+    })
 });
+
+
 
 server.listen(3000, ()=>{
     console.log('Server is works on PORT 3000...');
