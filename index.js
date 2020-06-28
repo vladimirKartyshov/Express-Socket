@@ -10,8 +10,17 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    users.push(socket);
-    console.log(`Users: ${users.length}`);
+  socket.on('login', (data)=> {
+     const found = users.find((nickname) => {
+          return nickname === data;
+      })
+      if (!found) {
+          users.push(data);
+          io.sockets.emit('login', {status: 'OK'});
+      }else {
+          io.sockets.emit('login', {status: 'FAILED'});
+      }
+  });
 });
 
 server.listen(3000, ()=>{
